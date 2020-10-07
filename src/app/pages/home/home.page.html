@@ -9,8 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-grid>
-    <ion-slides [options]="slideOptions" #slider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)"
-      style="padding: 0px;">
+    <ion-slides [options]="slideOptions" #slider pager="true" (ionSlidesDidLoad)="slidesDidLoad(slider)">
       <ion-slide *ngFor="let i of todos">
         <div class="slide">
           <img src="../../../assets/homeimgclient.jpg" />
@@ -22,7 +21,7 @@
     <ion-row>
       <ion-col class="ion-text-center">
         <div>
-          <h3>What We Do</h3>
+          <h3>Reccomended Services</h3>
         </div>
       </ion-col>
     </ion-row>
@@ -33,8 +32,12 @@
         <ion-card *ngFor="let i of todos">
           <img src="{{i.serviceimage}}" alt="">
           <ion-card-content class="ion-text-start">
-            <h2 class="ion-text-center">{{i.name}}</h2>
-            {{i.description}}
+            <h2 class="ion-text-center" style="font-weight: bold;">{{i.name}}</h2>
+            <br />
+            <div style="font-size: 15px; text-align: justify;
+            text-justify: inter-word;">
+              {{i.description}}
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -44,18 +47,29 @@
     <ion-row>
       <ion-col class="ion-text-center">
         <div>
-          <h3>Reccomended</h3>
+          <h3>What We Do</h3>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid>
+  <ion-grid style="padding: 20px;">
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="12" class="ion-text-center">
 
-      </ion-col>
-      <ion-col size="6">
-
+        <h3>Flexibility</h3>
+        <div style="font-size: 18px;" class="box">
+          Services tailored to your needs, According to your timelines.
+        </div>
+        <br />
+        <h3>Simplicity</h3>
+        <div style="font-size: 18px;">
+          Solutions built for problems of various complexities.
+        </div>
+        <br />
+        <h3>Clarity</h3>
+        <div style="font-size: 18px;">
+          Solutions at most transparency.
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

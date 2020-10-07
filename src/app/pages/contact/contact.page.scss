@@ -1,0 +1,12 @@
+ion-content{
+    --ion-background-color:#111D12;
+}
+
+ion-input,ion-textarea{
+    border-bottom: 1px solid #ffdf00;
+    color: #ffffff; 
+    }
+
+    ::placeholder{
+        --ion-color: #ffffff; 
+    }

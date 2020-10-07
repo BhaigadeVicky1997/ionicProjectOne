@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>feed</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon style="font-size: 30px;" slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main">
+  <ion-row class="rowStyle">
+    <button ion-button icon-only clear>
+      <ion-icon name="image-outline" color="danger" style="font-size: 25px;"></ion-icon>
+    </button>
+    <ion-input type="text" [(ngModel)]="postData" placeholder="Say Something....."></ion-input>
+    <button ion-button icon-only clear>
+      <ion-icon name="send" (click)="sendPost()" color="danger" style="font-size: 25px;"></ion-icon>
+    </button>
+  </ion-row>
+  <ion-card>
+    <ion-card-header color="danger">
+      VIcky Say's
+    </ion-card-header>
+    <ion-card-content text-wrap class="card_body">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur voluptatum consequatur ullam doloremque
+      excepturi.
+      Incidunt eius corporis, delectus a sapiente, commodi vel neque iure molestias explicabo esse natus reiciendis
+      aliquam.
+      <ion-row class="bottom_bar">
+        <ion-col>
+          <button block ion-button icon-left clear small color="danger">
+            <ion-icon  color="danger" style="font-size: 18px;" name="thumbs-up"></ion-icon>
+            12 Likes
+          </button>
+        </ion-col>
+        <ion-col>
+          <button block ion-button icon-left clear small color="danger">
+            <ion-icon  color="danger" style="font-size: 18px;" name="document-text-outline"></ion-icon>
+           12 Comment
+          </button>
+        </ion-col>
+        <ion-col>
+          <button block ion-button icon-left clear small color="danger">
+            12 Min Ago
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

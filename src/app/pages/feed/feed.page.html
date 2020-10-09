@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="danger">
-    <ion-title>feed</ion-title>
+    <ion-title>Blog</ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon style="font-size: 30px;" slot="icon-only" name="log-out"></ion-icon>
@@ -19,31 +19,28 @@
       <ion-icon name="send" (click)="sendPost()" color="danger" style="font-size: 25px;"></ion-icon>
     </button>
   </ion-row>
-  <ion-card>
+  <ion-card *ngFor="let f of posts">
     <ion-card-header color="danger">
-      VIcky Say's
+    {{f.data().owner_name}} Says
     </ion-card-header>
     <ion-card-content text-wrap class="card_body">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur voluptatum consequatur ullam doloremque
-      excepturi.
-      Incidunt eius corporis, delectus a sapiente, commodi vel neque iure molestias explicabo esse natus reiciendis
-      aliquam.
-      <ion-row class="bottom_bar">
-        <ion-col>
+    {{f.data().postText}} 
+      <ion-row class="bottom_bar" style="display: block;">
+        <ion-col size="4">
           <button block ion-button icon-left clear small color="danger">
             <ion-icon  color="danger" style="font-size: 18px;" name="thumbs-up"></ion-icon>
             12 Likes
           </button>
-        </ion-col>
-        <ion-col>
+        </ion-col >
+        <ion-col size="4">
           <button block ion-button icon-left clear small color="danger">
             <ion-icon  color="danger" style="font-size: 18px;" name="document-text-outline"></ion-icon>
            12 Comment
           </button>
         </ion-col>
-        <ion-col>
+        <ion-col size="4">
           <button block ion-button icon-left clear small color="danger">
-            12 Min Ago
+           {{ago(f.data().created.toDate())}} ago
           </button>
         </ion-col>
       </ion-row>

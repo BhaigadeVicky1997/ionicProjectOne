@@ -28,14 +28,13 @@
   </ion-grid>
   <ion-grid class="ion-margin-top">
     <ion-row>
-      <ion-col>
+      <ion-col class="ion-text-center">
         <ion-card *ngFor="let i of todos">
-          <img src="{{i.serviceimage}}" alt="">
           <ion-card-content class="ion-text-start">
-            <h2 class="ion-text-center" style="font-weight: bold;">{{i.name}}</h2>
+            <h2 class="ion-text-center" style="font-weight: bold; color: #fff;">{{i.name}}</h2>
             <br />
             <div style="font-size: 15px; text-align: justify;
-            text-justify: inter-word;">
+            text-justify: inter-word; color: #fff;">
               {{i.description}}
             </div>
           </ion-card-content>

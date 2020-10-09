@@ -17,6 +17,7 @@ export class SigninPage implements OnInit {
   email: any;
   password: any;
   cPass: any;
+  name: any;
 
   constructor(public AlertController: AlertController, public Router: Router) { }
 
@@ -42,8 +43,16 @@ export class SigninPage implements OnInit {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then(async result => {
           console.log(result);
-          this.presentAlert('User Successfully Signin');
-          this.Router.navigate(['/login']);
+          let newUser: firebase.User = result.user;
+          newUser.updateProfile({
+            displayName: this.name,
+            photoURL: ""
+          })
+            .then((re) => {
+              console.log(re);
+              this.presentAlert(this.name + ' Successfully Signin');
+              this.Router.navigate(['/login']);
+            })
         })
         .catch(err => {
           console.log(err.message);

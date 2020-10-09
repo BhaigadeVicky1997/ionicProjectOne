@@ -44,7 +44,12 @@
           </button>
         </ion-col>
       </ion-row>
-
     </ion-card-content>
   </ion-card>
+
+<ion-infinite-scroll (ionInfinite)="loadMorePosts($event)">
+  <ion-infinite-scroll-content>
+
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>

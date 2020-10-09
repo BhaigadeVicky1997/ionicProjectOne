@@ -24,9 +24,10 @@ export class FeedPage {
   postData: string = "";
   posts: any = [];
   name;
+  pageSize:number = 10;
   private todosCollection: AngularFirestoreCollection;
   data: any;
-
+ cursor:any;
   constructor(private FirebaseServiceService: FirebaseServiceService, db: AngularFirestore, private utilities: CommonUtilitiesService,public LoadingController:LoadingController) {
 
   }
@@ -51,11 +52,12 @@ export class FeedPage {
 
 
   //Api Integration 
+  
   getPost() {
 
     this.posts = [];
     
-    firebase.firestore().collection("posts").orderBy("created", 'desc').get()
+    firebase.firestore().collection("posts").orderBy("created", 'desc').limit(this.pageSize).get()
       .then(doc => {
         doc.forEach((docsData) => {
           this.posts.push(docsData)
@@ -64,11 +66,36 @@ export class FeedPage {
         let u = firebase.auth().currentUser;
         this.name = u.displayName;
         console.log(this.posts);
+        this.cursor = this.posts[this.posts.length - 1];
       })
       .catch(err => {
         console.log(err);
       })
 
+  }
+  loadMorePosts(event){
+  
+    firebase.firestore().collection("posts").orderBy("created", 'desc').startAfter(this.cursor)
+    .limit(this.pageSize).get()
+      .then(doc => {
+        doc.forEach((docsData) => {
+          this.posts.push(docsData)
+        })
+
+        let u = firebase.auth().currentUser;
+        this.name = u.displayName;
+        console.log(this.posts);
+        if(doc.size < this.pageSize){
+              event.enable(false);
+        }
+        else{
+          event.complete();
+          this.cursor = this.posts[this.posts.length - 1];
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   sendPost() {

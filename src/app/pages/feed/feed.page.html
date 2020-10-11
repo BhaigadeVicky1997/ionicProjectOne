@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Blog</ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" (click)="logOut()">
       <ion-button>
         <ion-icon style="font-size: 30px;" slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
@@ -19,37 +22,50 @@
       <ion-icon name="send" (click)="sendPost()" color="danger" style="font-size: 25px;"></ion-icon>
     </button>
   </ion-row>
-  <ion-card *ngFor="let f of posts">
-    <ion-card-header color="danger">
-    {{f.data().owner_name}} Says
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let f of posts" class="ion-margin-top">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../../assets/images.png" style="width: 100%;">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{f.data().owner_name}} Says</h3>
+        <p> {{ago(f.data().created.toDate())}} ago</p>
+      </ion-label>
+    </ion-item>
+    <ion-card-header>
+      <ion-card-title>Hotel Panama Garden</ion-card-title>
     </ion-card-header>
-    <ion-card-content text-wrap class="card_body">
-    {{f.data().postText}} 
-      <ion-row class="bottom_bar" style="display: block;">
-        <ion-col size="4">
-          <button block ion-button icon-left clear small color="danger">
-            <ion-icon  color="danger" style="font-size: 18px;" name="thumbs-up"></ion-icon>
-            12 Likes
-          </button>
-        </ion-col >
-        <ion-col size="4">
-          <button block ion-button icon-left clear small color="danger">
-            <ion-icon  color="danger" style="font-size: 18px;" name="document-text-outline"></ion-icon>
-           12 Comment
+    <ion-card-content>
+      {{f.data().postText}}
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col class="ion-text-center" style="display: grid;">
+          <button>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>1.5k Likes</div>
           </button>
         </ion-col>
-        <ion-col size="4">
-          <button block ion-button icon-left clear small color="danger">
-           {{ago(f.data().created.toDate())}} ago
+        <ion-col class="ion-text-center" style="display: grid;">
+          <button>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
           </button>
         </ion-col>
       </ion-row>
-    </ion-card-content>
+    </ion-footer>
   </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadMorePosts($event)">
+    <ion-infinite-scroll-content>
 
-<ion-infinite-scroll (ionInfinite)="loadMorePosts($event)">
-  <ion-infinite-scroll-content>
-
-  </ion-infinite-scroll-content>
-</ion-infinite-scroll>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -4,6 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Home</ion-title>
+    <ion-buttons slot="end" (click)="logOut()">
+      <ion-button>
+        <ion-icon style="font-size: 30px;" slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +34,6 @@
 
     </ion-row>
   </ion-grid>
-
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-center">
@@ -43,7 +47,6 @@
     <ion-row>
       <ion-col>
         <ion-card *ngFor="let i of todos">
-          <img src="../../../assets/homeimgclient.jpg" alt="ion">
           <ion-card-header>
             <ion-card-title>{{i.name}}</ion-card-title>
           </ion-card-header>
@@ -51,7 +54,7 @@
             {{i.description}}
           </ion-card-content>
         </ion-card>
-        <h4 class="ion-text-end">See All</h4>
+        <h5 class="ion-text-end" routerLink="/services">See All</h5>
       </ion-col>
     </ion-row>
   </ion-grid>

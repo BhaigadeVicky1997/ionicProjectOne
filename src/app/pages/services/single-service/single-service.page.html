@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Smart Home</ion-title>
+    <ion-buttons slot="end" (click)="logOut()">
+      <ion-button>
+        <ion-icon style="font-size: 30px;" slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img src="../../../../assets/homegateclient.jpg" alt="">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>name</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            description
+            Cost
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

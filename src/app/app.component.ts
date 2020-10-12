@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Services',
-      url: '/feed',
+      url: '/services',
       icon: 'paper-plane'
     },
     {

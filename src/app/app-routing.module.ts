@@ -30,7 +30,16 @@ const routes: Routes = [
   {
     path: 'contact',
     loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'services',
+    loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
+  },
+  {
+    path: 'single-service',
+    loadChildren: () => import('./pages/services/single-service/single-service.module').then( m => m.SingleServicePageModule)
   }
+
 ];
 
 @NgModule({

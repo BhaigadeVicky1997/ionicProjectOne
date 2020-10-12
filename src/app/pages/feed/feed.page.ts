@@ -8,7 +8,6 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { CommonUtilitiesService } from 'src/app/shared/common-utilities.service';
 import * as moment from 'moment';
 import { NavController } from '@ionic/angular';
-import {LoginPage}  from '../auth/login/login.page';
 
 @Component({
   selector: 'app-feed',
@@ -26,7 +25,7 @@ export class FeedPage {
   data: any;
   cursor: any;
   infinite: any;
-  constructor(private navCtrl:NavController,private FirebaseServiceService: FirebaseServiceService, db: AngularFirestore, private utilities: CommonUtilitiesService) {}
+  constructor(private navCtrl: NavController, private FirebaseServiceService: FirebaseServiceService, db: AngularFirestore, private utilities: CommonUtilitiesService) { }
 
   ngOnInit() {
     this.getPost();
@@ -34,14 +33,13 @@ export class FeedPage {
 
   //Api Integration 
 
-  logOut(){
-  firebase.auth().signOut();
-  this.utilities.presentLoading('You Have Been Logged Out!');
-  this.navCtrl.navigateBack('/login');
+  logOut() {
+    firebase.auth().signOut();
+    this.utilities.presentLoading('You Have Been Logged Out!');
+    this.navCtrl.navigateBack('/login');
   }
 
   getPost() {
-
     this.posts = [];
     this.utilities.presentLoading('Loading......');
     firebase.firestore().collection("posts").orderBy("created", 'desc').limit(this.pageSize).get()
@@ -49,7 +47,6 @@ export class FeedPage {
         doc.forEach((docsData) => {
           this.posts.push(docsData)
         })
-
         let u = firebase.auth().currentUser;
         this.name = u.displayName;
         console.log(this.posts);
@@ -86,14 +83,14 @@ export class FeedPage {
 
   doRefresh(event) {
     this.posts = [];
-    this.getPost();  
-    
-    if(this.infinite){
+    this.getPost();
+
+    if (this.infinite) {
 
       this.infinite.enable = true;
     }
     event.target.complete();
-   }
+  }
 
   sendPost() {
     if (this.postData == '') {

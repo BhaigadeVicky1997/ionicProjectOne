@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
       .then(res => {
         console.log(res);
         this.presentAlert('Login Success!');
-        this.NavController.navigateRoot('/feed');
+        this.NavController.navigateRoot('/login');
       })
       .catch(err => {
         console.log(err.message);

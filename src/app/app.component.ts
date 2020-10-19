@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -24,7 +23,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'About Us',
-      url: '',
+      url: '/feed',
       icon: 'information-circle'
     },
     {

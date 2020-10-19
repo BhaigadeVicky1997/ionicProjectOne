@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 //Local imports
 import { AppComponent } from './app.component';
@@ -19,8 +20,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
-firebase.initializeApp(environment.firebase);
-
+firebase.initializeApp(environment.firebase)
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,14 +32,17 @@ firebase.initializeApp(environment.firebase);
     AngularFireModule.initializeApp(environment),
     AngularFirestoreModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [
     StatusBar,
-    CommonUtilitiesService,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    CommonUtilitiesService,
+    Camera,
+    { provide: [RouteReuseStrategy], useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

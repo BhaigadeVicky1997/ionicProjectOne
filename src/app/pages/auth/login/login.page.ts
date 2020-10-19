@@ -1,6 +1,10 @@
+//Angular Ionic Imports
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController,NavController, AlertController  } from '@ionic/angular';
+import { ToastController, NavController, AlertController } from '@ionic/angular';
+
+//Local Imports
+import { CommonUtilitiesService } from 'src/app/shared/common-utilities.service';
 
 //firebase import 
 import * as firebase from 'firebase';
@@ -15,35 +19,35 @@ export class LoginPage implements OnInit {
   //Variable Declaration's
   email;
   pass;
-  constructor(public AlertController: AlertController,public NavController:NavController,public Router:Router,public ToastController:ToastController) { }
+  constructor(
+    public AlertController: AlertController,
+    public NavController: NavController,
+    public Router: Router,
+    public ToastController: ToastController,
+    public CommonUtilitiesService: CommonUtilitiesService
+  ) { }
 
   ngOnInit() {
   }
-  async presentAlert(error) {
-    const alert = await this.AlertController.create({
-      message: error,
-      cssClass: 'alertHeader',
-      animated: true,
-      buttons: ['OK']
-    });
 
-    await alert.present();
-  }
+  
   login() {
     if (this.email == undefined || this.pass == undefined) {
-      this.presentAlert('Please fill all fields.')
+      this.CommonUtilitiesService.presentAlert('Please fill all fields.')
     }
-    else{
+    else {
       firebase.auth().signInWithEmailAndPassword(this.email, this.pass)
-      .then(res => {
-        console.log(res);
-        this.presentAlert('Login Success!');
-        this.NavController.navigateRoot('/login');
-      })
-      .catch(err => {
-        console.log(err.message);
-        this.presentAlert(err.message);
-      })
+        .then(res => {
+          console.log(res);
+          this.CommonUtilitiesService.presentAlert('Login Success!');
+          setTimeout(() => {
+            this.Router.navigate(['/home']);
+          }, 2000)
+        })
+        .catch(err => {
+          console.log(err.message);
+          this.CommonUtilitiesService.presentAlert(err.message);
+        })
     }
   }
 }

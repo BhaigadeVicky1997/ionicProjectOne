@@ -15,7 +15,7 @@
 <ion-content class="main">
   <ion-row class="rowStyle">
     <button ion-button icon-only clear>
-      <ion-icon name="image-outline" color="danger" style="font-size: 25px;"></ion-icon>
+      <ion-icon name="image-outline" (click)="addPhoto()"  color="danger" style="font-size: 25px;" ></ion-icon>
     </button>
     <ion-input type="text" [(ngModel)]="postData" placeholder="Say Something....."></ion-input>
     <button ion-button icon-only clear>
@@ -30,22 +30,26 @@
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
+
   <ion-card *ngFor="let f of posts" class="ion-margin-top">
     <ion-item>
       <ion-avatar slot="start">
         <img src="../../../assets/images.png" style="width: 100%;">
       </ion-avatar>
       <ion-label>
-        <h3>{{f.data().owner_name}} Says</h3>
+        <h2>{{f.data().owner_name}} Says</h2>
         <p> {{ago(f.data().created.toDate())}} ago</p>
       </ion-label>
     </ion-item>
     <ion-card-header>
-      <ion-card-title>Hotel Panama Garden</ion-card-title>
+      <ion-card-title>{{f.data().postText}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      {{f.data().postText}}
+    <ion-card-content class="rowStyle">
+    
+      <img [src]="f.data().image" class="captureImg" *ngIf="f.data().image">
+
     </ion-card-content>
+
     <ion-footer>
       <ion-row>
         <ion-col class="ion-text-center" style="display: grid;">

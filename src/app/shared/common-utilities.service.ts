@@ -1,9 +1,7 @@
-//Npm imports
+//Angular Ionic imports
 import { Injectable } from '@angular/core';
-
-//ionic component imports
 import { LoadingController } from '@ionic/angular';
-
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,8 @@ import { LoadingController } from '@ionic/angular';
 export class CommonUtilitiesService {
 
   constructor(
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public AlertController:AlertController
   ) { }
 
   async presentLoading(msg) {
@@ -24,5 +23,16 @@ export class CommonUtilitiesService {
     await loading.present();
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
+  }
+
+  async presentAlert(msg) {
+    const alert = await this.AlertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      message: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

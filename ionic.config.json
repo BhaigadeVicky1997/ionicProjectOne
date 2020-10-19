@@ -1,5 +1,7 @@
 {
   "name": "unicams",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

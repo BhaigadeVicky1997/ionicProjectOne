@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyC1EnQLqNFl8Ff4JvIkRFkqetDuTrJpQKU",
-    authDomain: "unicams-8996c.firebaseapp.com",
-    databaseURL: "https://unicams-8996c.firebaseio.com",
-    projectId: "unicams-8996c",
-    storageBucket: "unicams-8996c.appspot.com",
-    messagingSenderId: "848206481877",
-    appId: "1:848206481877:web:846e7834c0fcf84117955c",
-    measurementId: "G-C4EG71QB73"
+    apiKey: "AIzaSyBgGukLZ5PkN5jHsnpkAKTo2Fk-30wGeks",
+    authDomain: "unicamsionic.firebaseapp.com",
+    databaseURL: "https://unicamsionic.firebaseio.com",
+    projectId: "unicamsionic",
+    storageBucket: "unicamsionic.appspot.com",
+    messagingSenderId: "446611684048",
+    appId: "1:446611684048:web:c5ad506a4cfa562b08fcd5",
+    measurementId: "G-4S2KR3VXJ2"
   }
 };
 
